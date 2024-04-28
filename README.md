@@ -21,3 +21,9 @@ The apt cache server in this case, runs on 172.21.1.10:3142
 ```bash
 echo "Acquire::http::Proxy \"http://172.21.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy  && apt update && apt upgrade -y
 ```
+
+## Enable UTF-8 locale in Ubuntu
+
+```bash
+sed -i 's/^# \(C\.UTF-8\|en_US\.UTF-8\) UTF-8$/\1 UTF-8/' /etc/locale.gen && locale-gen
+```
