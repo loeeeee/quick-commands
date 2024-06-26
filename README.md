@@ -19,8 +19,10 @@ EOF
 The apt cache server in this case, runs on 172.21.1.10:3142
 
 ```bash
-echo "Acquire::http::Proxy \"http://172.21.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy  && apt update && apt upgrade -y
+apt update && echo "Acquire::http::Proxy \"http://172.21.1.10:3142\";" > /etc/apt/apt.conf.d/00aptproxy  && apt update && apt upgrade -y
 ```
+
+The reason doing an `apt update` first is that Ubuntu needs to update key information.
 
 ## Enable UTF-8 locale in Ubuntu
 
