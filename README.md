@@ -29,3 +29,9 @@ The reason doing an `apt update` first is that Ubuntu needs to update key inform
 ```bash
 sed -i 's/^# \(C\.UTF-8\|en_US\.UTF-8\) UTF-8$/\1 UTF-8/' /etc/locale.gen && locale-gen
 ```
+
+## Download update signature from apt server, bypassing the proxy server
+
+```bash
+sed -i.bak 's/^/#/' '/etc/apt/apt.conf.d/00aptproxy' && apt update && sudo sed -i.bak 's/#//g' '/etc/apt/apt.conf.d/00aptproxy'
+```
